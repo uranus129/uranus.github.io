@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clicker Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 50px;
+    }
+    #clickArea {
+      font-size: 24px;
+      cursor: pointer;
+      user-select: none;
+      padding: 20px;
+      border: 2px solid #000;
+      display: inline-block;
+    }
+    #score {
+      font-size: 36px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Clicker Game</h1>
+  <p>Click the button as many times as you can in 10 seconds!</p>
+  <div id="clickArea">Click Me!</div>
+  <p id="score">Score: 0</p>
+
+  <script>
+    let score = 0;
+    let isGameRunning = false;
+
+    document.getElementById('clickArea').addEventListener('click', function() {
+      if (isGameRunning) {
+        score++;
+        document.getElementById('score').textContent = 'Score: ' + score;
+      }
+    });
+
+    function startGame() {
+      score = 0;
+      document.getElementById('score').textContent = 'Score: 0';
+      isGameRunning = true;
+      setTimeout(function() {
+        isGameRunning = false;
+        alert('Game over! Your score is ' + score);
+      }, 10000); // 10 seconds
+    }
+  </script>
+  <button onclick="startGame()">Start Game</button>
+</body>
+</html>
+
+<script src="app.js"></script>
+<!— <script src"https://telegram.org/js/telegram-web-app.js"></script> —>
